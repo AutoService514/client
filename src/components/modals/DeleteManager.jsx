@@ -23,7 +23,7 @@ const Modal = ({ setIsOpen }) => {
       <div className={styles.centered}>
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
-            <h5 className={styles.heading}>Форма додавання типу</h5>
+            <h5 className={styles.heading}>Форма для видалення менеджера</h5>
           </div>
           <form
             id="form"
@@ -41,39 +41,39 @@ const Modal = ({ setIsOpen }) => {
               <div className="form-group">
                 <input
                   type="text"
-                  placeholder="Enter name of type"
-                  name="title"
-                  id="title"
-                  {...register("title", {
-                    required: "Title is required",
+                  placeholder="Enter uuid of manager"
+                  name="id"
+                  id="id"
+                  {...register("id", {
+                    required: "Id is required",
                     minLength: {
-                      value: 5,
-                      message: "Title must be at least 5 characters",
+                      value: 36,
+                      message: "Id must be at least 36 characters",
                     },
                     maxLength: {
-                      value: 30,
-                      message: "Title must be at most 30 characters",
+                      value: 36,
+                      message: "Id must be at most 36 characters",
                     },
                     pattern: {
-                      value: /^[A-Za-z0-9]+$/,
-                      message: "Title must contain only letters and numbers",
+                      value: /^[A-Za-z0-9-]+$/,
+                      message: "Id must contain only letters and numbers",
                     },
                   })}
                 />
-                {errors.title && (
-                  <p className="error">{errors.title.message}</p>
+                {errors.id && (
+                  <p className="error">{errors.id.message}</p>
                 )}
               </div>
             </div>
             <div className={styles.modalActions}>
               <div className={styles.actionsContainer}>
                 <button
-                  className={styles.createBtn}
+                  className={styles.deleteBtn}
                   type="submit"
                   id="submit"
                   onClick={() => setIsOpen(true)}
                 >
-                  Create
+                  Delete
                 </button>
                 <button
                   className={styles.cancelBtn}

@@ -23,7 +23,7 @@ const Modal = ({ setIsOpen }) => {
       <div className={styles.centered}>
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
-            <h5 className={styles.heading}>Форма додавання типу</h5>
+            <h5 className={styles.heading}>Форма додавання сервісу</h5>
           </div>
           <form
             id="form"
@@ -37,11 +37,11 @@ const Modal = ({ setIsOpen }) => {
             >
               <RiCloseLine style={{ marginBottom: "-3px" }} />
             </button>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContentCreateService}>
               <div className="form-group">
                 <input
                   type="text"
-                  placeholder="Enter name of type"
+                  placeholder="Enter title of service"
                   name="title"
                   id="title"
                   {...register("title", {
@@ -63,6 +63,66 @@ const Modal = ({ setIsOpen }) => {
                 {errors.title && (
                   <p className="error">{errors.title.message}</p>
                 )}
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Enter price of service"
+                  name="price"
+                  id="price"
+                  {...register("price", {
+                    required: "Price is required",
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: "Price must contain only numbers",
+                    },
+                  })}
+                />
+                {errors.price && (
+                  <p className="error">{errors.price.message}</p>
+                )}
+              </div>
+              {/* <input type="text" placeholder="Enter description of service" /> */}
+              <div className="form-group">
+                <textarea
+                  name="description"
+                  placeholder="Enter description of service"
+                  {...register("description", {
+                    required: "Description is required",
+                    minLength: {
+                      value: 5,
+                      message: "Description must be at least 5 characters",
+                    },
+                    maxLength: {
+                      value: 100,
+                      message: "Description must be at most 100 characters",
+                    },
+                    pattern: {
+                      value: /^[A-Za-z0-9]+$/,
+                      message:
+                        "Description must contain only letters and numbers",
+                    },
+                  })}
+                ></textarea>
+                {errors.description && (
+                  <p className="error">{errors.description.message}</p>
+                )}
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Enter type id of service"
+                  id="type"
+                  name="type"
+                  {...register("type", {
+                    required: "Type is required",
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: "Type id must contain only numbers",
+                    },
+                  })}
+                />
+                {errors.type && <p className="error">{errors.type.message}</p>}
               </div>
             </div>
             <div className={styles.modalActions}>

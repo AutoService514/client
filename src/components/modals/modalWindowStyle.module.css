@@ -1,3 +1,12 @@
+@import url(../../style/variables.css);
+textarea{
+  resize: none;
+  outline: none;
+  border: none;
+  min-width: 210px;
+  padding: 10px;
+  border-radius: 8px;
+}
 .darkBG {
   background-color: rgba(0, 0, 0, 0.2);
   width: 100vw;
@@ -17,10 +26,10 @@
 }
 
 .modal {
-  width: 250px;
-  height: 170px;
-  background: white;
-  color: white;
+  width: 350px;
+  height: 370px;
+  background: var(--background-w);
+  color: var(--background);
   z-index: 10;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
@@ -28,7 +37,6 @@
 
 .modalHeader {
   height: 50px;
-  background: white;
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -37,19 +45,24 @@
 .heading {
   margin: 0;
   padding: 10px;
-  color: #2c3e50;
+  color: var(--background);
   font-weight: 500;
   font-size: 18px;
   text-align: center;
 }
 
-.modalContent {
+.modalContent,.modalContentCreateService {
   padding: 10px;
   font-size: 14px;
   color: #2c3e50;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-
+.modalContentCreateService{
+  padding: 0; 
+}
 .modalActions {
   position: absolute;
   bottom: 2px;
@@ -71,7 +84,7 @@
   border: none;
   font-size: 18px;
   color: #2c3e50;
-  background: white;
+  background: var(--white);
   transition: all 0.25s ease;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
   position: absolute;
@@ -95,7 +108,7 @@
   border-radius: 12px;
   font-size: 0.8rem;
   border: none;
-  color: #fff;
+  color: var(--white);
   background: #ff3e4e;
   transition: all 0.25s ease;
 }
@@ -106,7 +119,7 @@
   background: #ff3e4e;
 }
 
-.cancelBtn {
+.cancelBtn, .createBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -114,13 +127,25 @@
   border-radius: 12px;
   font-size: 0.8rem;
   border: none;
+  background: var(--descript);
+
   color: #2c3e50;
-  background: #fcfcfc;
-  transition: all 0.25s ease;
+  transition: all 0.35s ease;
+}
+
+.createBtn {
+  background: var(--background);
+  color: var(--white);
 }
 
 .cancelBtn:hover {
   box-shadow: none;
+  background: var(--white);
   transform: none;
-  background: whitesmoke;
+
+}
+.createBtn:hover {
+  box-shadow: none;
+  transform: none;
+  background: var(--highlight);
 }

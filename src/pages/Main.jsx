@@ -3,7 +3,7 @@ import image from "../assets/logoAutoServ.jpeg";
 import "../style/main_styles.css";
 import opacityAppear from "./anim";
 
-const mainPage = () => {
+const MainPage = () => {
   const [animationCompleted, setAnimationCompleted] = useState(false);
   useEffect(() => {
     const wrapper = document.querySelector(".wrap");
@@ -15,11 +15,14 @@ const mainPage = () => {
       }, 250);
     }
   }, [animationCompleted]);
+
   return (
     <div className="wrap">
       <div className="header">
         <div className="header-title">
-          <h1 className="title-main">Welcome to <p className="title-main-p">AutoService Pro</p></h1>
+          <h1 className="title-main">
+            Welcome to <p className="title-main-p">AutoService Pro</p>
+          </h1>
         </div>
         <div className="logo">
           <img src={image} alt="main" className="img" />
@@ -29,4 +32,4 @@ const mainPage = () => {
   );
 };
 
-export default mainPage;
+export default MainPage;

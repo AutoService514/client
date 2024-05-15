@@ -2,7 +2,10 @@
 .wrap-admin {
   opacity: 0;
 }
-
+.navbar-container{
+  width: 100%;
+  height: 100%;
+}
 .container-button {
   display: flex;
   flex-direction: column;
@@ -492,14 +495,7 @@ h3,p {
 
 .service-info {
   min-width: 360px;
-  /* min-height: 350px; */
 }
-
-/* 
-.service-description {
-
-  padding: 5px 5px;
-} */
 
 .service-h3 {
   padding: 0;
@@ -520,7 +516,7 @@ h3,p {
   transition: transform 0.5s ease, opacity 0.2s ease, color 0.2s ease;
   cursor: pointer;
   user-select: none;
-  /* background-color: ; */
+  color: var(--background-w);
 }
 
 .list-item-bag>.fa-solid {
@@ -895,13 +891,19 @@ h3,p {
   border: 2px solid var(--background-w) ;
   border-radius: var(--border-rad) 0 var(--border-rad) 0;
 }
-.title-main{
+.title-main, .title-basket{
   display: flex;
   flex-direction: column;
   gap:20px;
   color: var(--background-w);
   font-size: 2.5em;
 }
+
+.title-basket{
+  align-items: center;
+  margin-top: 1em;
+}
+
 .title-main-p{
   gap:10px;
   color: var(--);

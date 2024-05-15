@@ -19,8 +19,6 @@ const Auth = () => {
       return errors;
     }
     console.log(data);
-    // console.log("1");
-    // history.push("/next-page");
   };
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTES;
@@ -98,7 +96,6 @@ const Auth = () => {
               <p className="error">{errors.login_password.message}</p>
             )}
             <div className="login-wrapper-btn">
-            
               <div className="input-wrapper">
                 <span className="faq">Don`t have an account? </span>
                 <NavLink className="reg" to={REGISTRATION_ROUTES}>
@@ -246,11 +243,9 @@ const Auth = () => {
             </div>
 
             <div className="input-wrapper">
-              {/*<NavLink to={LOGIN_ROUTES}>*/}
               <button className="button" type="submit" id="submit">
                 Sign Up<i className="bx bx-right-arrow-alt"></i>
               </button>
-              {/*</NavLink>*/}
             </div>
           </div>
         )}
