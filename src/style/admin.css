@@ -1,0 +1,32 @@
+/* .wrap-admin {
+  opacity: 0;
+}
+
+.btn {
+  text-align: center;
+  min-width: 370px;
+  max-width: 400px;
+  border-radius: var(--border-rad);
+  border: 1px solid var(--background);
+  background-color: var(--background-w);
+  padding: 25px 20px;
+  color: var(--background);
+  font: 1.6em sans-serif;
+  transition: all 0.3s;
+  user-select: none;
+  position: relative;
+}
+
+.btn:hover {
+  color: var(--highlight);
+  border-radius: 1em 0px 1em 0px;
+}
+
+.container-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  margin-top: 1.5em;
+} */

@@ -1,0 +1,134 @@
+/* @import url("../fonts/interFont.css");
+@import url("../style/variables.css");
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--background);
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.contrainer-navbar {
+  position: fixed;
+  margin: 0 auto;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, 0);
+  min-width: 500px;
+  z-index: 1;
+}
+
+.navbar {
+  border-radius: var(--border-rad);
+  background-color: var(--background-w);
+  display: flex;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+  box-shadow: 1px 4px 3px var(--shadow), 0 8px 10px var(--shadow);
+}
+ .visible {
+  animation: identifier 0.5s ease alternate;
+}
+
+@keyframes identifier {
+  0% {
+    transform: translateY(20px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+} 
+
+
+.list-item {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(20px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.list-item {
+  list-style-type: none;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  justify-content: center;
+  color: var(--background);
+  transform: translateY(0);
+  transition: transform 0.5s ease, opacity 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.list-item>.fa-solid {
+  font-size: 1.9em;
+}
+
+.list-item-name {
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  transform: translate(0, 50px);
+  transition: transform 0.3s ease, opacity 0.2s ease, color 0.5s ease;
+  opacity: 0;
+}
+
+.list-item:hover {
+  color: var(--highlight);
+  transform: translateY(-5px);
+
+  .list-item-name {
+    transform: translateY(25px);
+    opacity: 1;
+  }
+}
+
+@media (max-width:525px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .contrainer-navbar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .list-item {
+    flex-basis: auto;
+    min-width: 90px;
+  }
+
+  .list-item:hover {
+    .list-item-name {
+      transform: translateY(25px);
+    }
+  }
+} */
