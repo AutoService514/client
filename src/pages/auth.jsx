@@ -5,29 +5,48 @@ import { NavLink, useLocation } from "react-router-dom";
 import "../style/main_styles.css";
 import opacityAppear from "./anim";
 import { GoogleLogin } from "@react-oauth/google";
-
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import axios from "axios";
+
 const Auth = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data, e) => {
+
+  const onSubmit = async (data, e) => {
     if (Object.keys(errors).length > 0) {
       e.preventDefault();
       return errors;
     }
-    console.log(data);
+
+    try {
+      console.log(data);
+      const response = await axios.post(
+        `${process.env.BACKEND_URL}/client`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log('Registration successful:', response.data);
+    } catch (error) {
+      console.log('Error:', error);
+    }
   };
+
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTES;
+
   useEffect(() => {
     const wrapper = document.querySelector(
       isLogin ? ".login-wrapper" : ".reg-wrapper"
     );
     opacityAppear(wrapper);
-  }, []);
+  }, [isLogin]);
 
   return (
     <form
@@ -38,7 +57,6 @@ const Auth = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className={isLogin ? "login-wrapper" : "reg-wrapper"}>
-        {/* <div className={isLogin ? "login-wrapper" : "reg-wrapper"}> */}
         <h1 className="title">{isLogin ? "Welcome Back" : "Registration"}</h1>
         <p className={isLogin ? "description" : "description register"}>
           Enter your credentials to continue.
@@ -89,7 +107,6 @@ const Auth = () => {
                   },
                 })}
               />
-
               <i className="fa-solid fa-lock"></i>
             </div>
             {errors.login_password && (
@@ -102,7 +119,7 @@ const Auth = () => {
                   Registration
                 </NavLink>
               </div>
-              <GoogleOAuthProvider clientId="735439241424-tkum5tnp4rpoelbpjn43f4lcnhu7iqdt.apps.googleusercontent.com">
+              <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
                 <div className="input-wrapper">
                   <GoogleLogin
                     onSuccess={(credentialResponse) => {
@@ -114,14 +131,11 @@ const Auth = () => {
                   />
                 </div>
               </GoogleOAuthProvider>
-
               <div className="input-wrapper">
-                {/*<NavLink to={LOGIN_ROUTES}>*/}
                 <button className="button" type="submit">
                   Sign In
                   <i className="bx bx-right-arrow-alt"></i>
                 </button>
-                {/*</NavLink>*/}
               </div>
             </div>
           </div>
@@ -130,43 +144,34 @@ const Auth = () => {
             <div className="input-wrapper">
               <input
                 type="text"
-                placeholder="+380..-...-...-..."
-                name="telephone"
+                placeholder="Enter your phone number"
+                name="contactNumber"
                 title="Enter your phone number"
                 size="13"
                 inputMode="numeric"
-                id="telephone"
-                {...register("telephone", {
+                id="contactNumber"
+                {...register("contactNumber", {
                   required: "Phone number is required",
                   pattern: {
-                    value: "+380-[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{2}",
-                    message:
-                      "Phone number must be in the format +380-XX-XXX-XX-XX",
-                  },
-                  minLength: {
-                    value: 10,
-                    message: "Phone number must be exactly 13 characters long",
-                  },
-                  maxLength: {
-                    value: 13,
-                    message: "Phone number must be exactly 13 characters long",
+                    value: /^[+]?[0-9]{10,13}$/,
+                    message: "Phone number must be a valid format",
                   },
                 })}
               />
               <i className="fa-solid fa-phone"></i>
             </div>
-            {errors.telephone && (
-              <p className="error">{errors.telephone.message}</p>
+            {errors.contactNumber && (
+              <p className="error">{errors.contactNumber.message}</p>
             )}
 
             <div className="input-wrapper">
               <input
                 type="text"
                 placeholder="Enter your name"
-                autoComplete="Name"
-                name="name"
-                id="name"
-                {...register("name", {
+                autoComplete="name"
+                name="fullName"
+                id="fullName"
+                {...register("fullName", {
                   required: "Name is required",
                   minLength: {
                     value: 3,
@@ -178,14 +183,13 @@ const Auth = () => {
                   },
                   pattern: {
                     value: /^[a-zA-Zа-яА-Я]+$/,
-                    message:
-                      "Name must only contain letters, spaces, and hyphens",
+                    message: "Name must only contain letters",
                   },
                 })}
               />
               <i className="fa-solid fa-user"></i>
             </div>
-            {errors.name && <p className="error">{errors.name.message}</p>}
+            {errors.fullName && <p className="error">{errors.fullName.message}</p>}
 
             <div className="input-wrapper">
               <input
@@ -203,6 +207,10 @@ const Auth = () => {
                   maxLength: {
                     value: 30,
                     message: "Email cannot exceed 30 characters",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+                    message: "Email must be a valid gmail address",
                   },
                 })}
               />
@@ -232,7 +240,7 @@ const Auth = () => {
               <i className="fa-solid fa-lock"></i>
             </div>
             {errors.password && (
-              <p className="error">{errors.password.message} </p>
+              <p className="error">{errors.password.message}</p>
             )}
 
             <div className="input-wrapper">

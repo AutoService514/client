@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import {
   SERVICE_ROUTES,
-  DISCOUNT_ROUTES,
   LOGIN_ROUTES,
   ADMIN_ROUTES,
   BASKET_ROUTES,
@@ -18,7 +17,6 @@ import {
   faHouse,
   faShoppingBag,
   faSignIn,
-  faTag,
   faUser,
 } from "@fortawesome/free-solid-svg-icons"; 
 
@@ -55,7 +53,7 @@ const NavBar = observer(() => {
             </li>
           </NavLink>
           <NavLink
-            to={BASKET_ROUTES}
+            to={user.isAuth ? BASKET_ROUTES : LOGIN_ROUTES}
             onClick={() => (user.isAuth ? null : notify())}
           >
             <li className="list-item">

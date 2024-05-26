@@ -194,7 +194,7 @@ input[type=password] {
   width: 100%;
   transform: scaleX(0);
   height: 2px;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   background-color: var(--background);
   transition: transform 0.3s ease;
@@ -226,7 +226,7 @@ input[type=password] {
   .title,
   .description {
     text-align: center;
-    margin: 0px 0 10px 0;
+    margin: 0 0 10px 0;
     padding: 10px 0 0 0;
   }
   .description.register{
@@ -439,7 +439,6 @@ h3,p {
   gap: 20px;
   padding: 20px;
   border: 1px solid;
-  opacity: 0;
 }
 
 .service {
@@ -692,7 +691,7 @@ h3,p {
 }
 
 .dropdown-content {
-  padding: 0px;
+  padding: 0;
 }
 
 .menu-list-item.active .dropdown-content {
@@ -707,7 +706,7 @@ h3,p {
 
 .slide-out:hover {
   color: var(--highlight);
-  border-radius: 20px 0px 20px 0px;
+  border-radius: 20px 0 20px 0;
 }
 
 .slide-in {
@@ -746,7 +745,6 @@ h3,p {
 @keyframes slideOut {
   from {
     position: relative;
-    opacity: 1;
     transform: translateY(50%);
     max-height: 500px;
     opacity: 0;
@@ -796,7 +794,7 @@ h3,p {
 @media (max-height:760px) and (max-width:550px) {
   .menu-list-item{
     font-size: 1.2em;
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0 20px 0;
     min-height:10px;
     min-width: 310px;
   }
@@ -906,7 +904,7 @@ h3,p {
 
 .title-main-p{
   gap:10px;
-  color: var(--);
+  /*color: var(--);*/
   font-weight: 900;
   /* font-size: 1.2em; */
   animation: alternate colorTitleMain 5s infinite;
@@ -940,4 +938,22 @@ h3,p {
   100%{
     color: var(--background-w);
   }
+}
+
+/*basket*/
+.basket-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  flex-direction: column;
+}
+.basket-info {
+  min-height: 50px;
+  border: 1px solid var(--background);
+  background-color: var(--background-w);
+  color: var(--highlight);
+  border-radius: var(--border-rad);
+  text-align: center;
+  min-width: 350px;
 }

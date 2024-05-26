@@ -7,7 +7,6 @@ const MainPage = () => {
   const [animationCompleted, setAnimationCompleted] = useState(false);
   useEffect(() => {
     const wrapper = document.querySelector(".wrap");
-
     if (!animationCompleted) {
       setTimeout(() => {
         opacityAppear(wrapper);
